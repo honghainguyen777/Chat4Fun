@@ -1,0 +1,84 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+{{ channel }}
+{% endblock %}
+
+{% block main %}
+
+<div class="container">
+  <!--
+  <header class="header">
+    <h1>Header here</h1>
+  </header>
+-->
+
+  <div class="channels">
+    <div class="channel_header">
+      <span class="ch_header"><b>CHANNELS</b></span>
+    </div>
+    <ul class="channel_list">
+      <!-- List of all channel, make a loop here, make sure the file size of html = windown
+      This will display the number of people following the channel (followers)-->
+      {% for item in allChannels %}
+      <li>
+        <a class="channel_link" id="channel_{{ item }}" data-channel="{{item}}">
+          <span class="link_icon" ><i class="fab fa-joomla fa-2x"></i></span>
+          <div class="results__data">
+            <span class="results__name"><b>{{ item }}</b></span>
+          </div>
+          <hr>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="chatting">
+    <header class="chat__header">
+      <div class="row justify-content-center pt-4 m-0 h-100">
+        <div class="col-md-3 header" id="username">{{ username }}</div>
+        <div class="col-md-3 header" id="new_channel">CREATE</div>
+        {% if channel != "create" %}
+        <div class="col-md-3 header" id="channel_name">{{ channel }}</div>
+        <div class="col-md-3 header" id="leave_channel">LEAVE</div>
+        {% endif %}
+      </div>
+    </header>
+    <div class="chatingArea scroll" id="scroll_default" data-value="{{ check_channel }}">
+      <ul class="message_list">
+        <!-- all messages will be displayed here -->
+      </ul>
+      <div class="card" id="card_css">
+        <div class="card-header" style="text-align: center;">
+          <h2><b>Create a channel</b></h2>
+          <div class="card-body">
+            <form action="/create" method="post">
+              <div class="row form-group">
+                <div class="col-sm-9">
+                  <input class="form-control ml-2 w-100 input-text" type="text" placeholder="Type a name..." name="channel_name" minlength="3" maxlength="10" required style="font-size: medium;"></input>
+                </div>
+                <div class="col-sm-3">
+                  <button class="btn btn-info w-100 submit" type="submit"><i class="far fa-play-circle fa-3x"></i></button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="typing__Box">
+      {% if channel != "create" %}
+      <div id="typing">
+        <div class="input-group">
+          <textarea class="form-control type_msg" name="msg" placeholder="Type a message..." id="message" minlength="2" maxlength="100" required></textarea>
+          <div class="input-group-append mr-3">
+            <button type="submit" class="btn_submit" id="send_message"><i class="fas fa-paper-plane fa-2x green"></i></button>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}
