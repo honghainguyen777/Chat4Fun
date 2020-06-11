@@ -2,10 +2,6 @@
 
 ## Web Programming with Python and JavaScript
 
-## Requirements for this project
-
-### https://docs.cs50.net/web/2020/x/projects/2/project2.html
-
 ## Features of the app
 
 ### Create display name
