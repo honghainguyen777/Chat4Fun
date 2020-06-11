@@ -1,6 +1,6 @@
-# CS50-Web Project 2
+# Project: Chat4Fun
 
-## Web Programming with Python and JavaScript
+## Web Programming with Flask and JavaScript
 
 ## Features of the app
 
